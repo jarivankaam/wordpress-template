@@ -65,15 +65,10 @@
   position: relative;
 }
 
-.wrapper{
-  margin: 0 auto;
-  max-width: 1024px;
-}
+
 
 section{
   position: relative;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 body {
   font-family: $fontBody;
@@ -294,3 +289,19 @@ button.swiper-pagination-bullet {
     }
 }
 
+.maxtext {
+  max-width: 750px;
+}
+
+.absolute {
+  position: absolute;
+}
+.right{
+  right: 0;
+}
+.left{
+  left: 0;
+}
+.op3 {
+    opacity: 0.3;
+}
