@@ -11,21 +11,41 @@ $subtext = get_sub_field('hero_content');
 
 $buttons = get_sub_field('buttons');
 $hero_image = get_sub_field('image');
+$useImage = get_sub_field('use_image');
+$hero_color = get_sub_field('hero_color');
+
 if(!empty($buttons)) {
     $buttonCount = count($buttons);
 };
 
 ?>
 
-<section id="<?= $section_id; ?>" class="section-hero">
-    <div class="image-wrapper">
-        <img src="<?= $hero_image ?>" alt="hero image">
-    </div>
+<?php if(!$useImage): ?>
+<style>
+    .color-wrapper {
+        background: <?= $hero_color ?>;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+<?php endif; ?>
+
+<section id="<?= $section_id; ?>" class="section-hero <?php if(!is_front_page()): ?> m-bot-50 <?php endif ?>">
+    <?php if($useImage): ?>
+        <div class="image-wrapper">
+            <img src="<?= $hero_image ?>" alt="hero image">
+        </div>
+    <?php else: ?>
+        <div class="color-wrapper"></div>
+    <?php endif ?>
     <div class="container">
         <div class="row">
             <?php if($title) : ?>
                 <div class="col-12 <?php if($hero_image): ?>col-sm-12 col-md-12 col-lg-6 <?php endif ?>">
-                    <div class="content-wrapper maxtext">
+                    <div class="content-wrapper maxtext <?php if(is_front_page()): ?> frontpage <?php endif ?>">
                         <h1><?= $title ?></h1>
                         <div class="subtext">
                             <p><?= $subtext ?></p>

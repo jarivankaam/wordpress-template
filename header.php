@@ -1,7 +1,18 @@
 <?php
 $logo = get_field('header_logo', 'options');
 $buttons = get_field("buttons", "options");
+$slogan = get_field("slogan", "options");
 ?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <script src="https://kit.fontawesome.com/79f79ff0fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" type="text/css" />
+    <?php wp_head(); ?>
+</head>
 
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
@@ -18,9 +29,12 @@ $buttons = get_field("buttons", "options");
                                     <?php echo get_bloginfo('name'); ?>
                                 <?php endif ?>
                             </a>
+                            <?php if($slogan) : ?>
+                                <p class="slogan mobile-hide"><?= $slogan ?></p>
+                            <?php endif ;?>
                         </div>
 
-                        <div class="main-menu col-menu flex align-items-center mobile-hide">
+                        <div class="main-menu col-menu flex align-items-center">
                             <?php
                                 wp_nav_menu( array(
                                 'theme_location'  => 'primary', // Make sure 'primary' matches the identifier used in register_nav_menus
@@ -30,46 +44,20 @@ $buttons = get_field("buttons", "options");
                                 'fallback_cb'     => false            // Do not fall back to wp_page_menu()
                                 ) );
                                 ?>
-                                <ul>
+                                <ul class="mobile-hide">
                                     <?php if($buttons) : ?>
-                                        <li class="cta-wrapper">
+                                        <li class="cta-wrapper ">
                                             <?php foreach($buttons as $button) : ?>
                                                 <a href="<?= $button['url']['url'] ?>"><?= $button['url']['title'] ?></a>
                                             <?php endforeach ?>
                                         </li>
                                     <?php endif ?>
                                 </ul>
-
-                            <div class="desktop-hide">
-
-                            </div>
+                        </div>
+                        <div class="desktop-hide">
+                            <i class="fa-solid fa-bars wpr-mobile-toggle burger"></i>
                         </div>
                     </div>
-
-<!--                    <div class="col-right flex align-center">-->
-<!---->
-<!--                        <ul class="right-menu flex align-center desktop-hide">-->
-<!--                            <li>-->
-<!--                                <a class="menu-toggle" href="javascript:void(0);">-->
-<!--                                    <span class="menu-toggle-button icon icon-before icon-menu noma"></span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            --><?php
-//                            wp_nav_menu( array(
-//                                'theme_location' => 'primary', // Specify the menu location identifier, change this to your actual theme location
-//                                'container'      => 'nav',      // Wraps the menu in <nav> tags
-//                                'container_class'=> 'primary-menu', // Class for the container
-//                                'menu_class'     => 'nav-items',     // Class for the <ul> element
-//                                'fallback_cb'    => false            // Do not fall back to wp_page_menu()
-//                            ) );
-//                            ?>
-<!--                            <li>-->
-<!--                                <a class="menu-toggle" href="javascript:void(0);">-->
-<!--                                    <span class="menu-toggle-button icon icon-before icon-menu noma"></span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>

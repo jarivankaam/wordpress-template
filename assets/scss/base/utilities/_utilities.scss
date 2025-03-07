@@ -305,3 +305,33 @@ button.swiper-pagination-bullet {
 .op3 {
     opacity: 0.3;
 }
+
+.cta-wrapper {
+  a {
+    background: $button1-color !important;
+    transition: .3s;
+  }
+  &:hover {
+    a {
+      color: white !important;
+      transition: .3s;
+      background: $button2-color !important;
+    }
+  }
+}
+
+.section-breadcrumbs {
+  margin: 0;
+  position: relative;
+  top: 100px;
+  @media screen and (max-width: 991px) {
+    top: 35px;
+  }
+  span > * {
+    color: white;
+  }
+}
+
+.m-bot-50 {
+  margin-bottom: 50px !important;
+}

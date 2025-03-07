@@ -3,23 +3,28 @@
   margin-bottom: 100px;
   .section-heading {
     h2 {
-      color: $white;
+      color: $primary_color;
       font-size: 40px;
     }
   }
 
   .tile-wrapper {
     padding: 0 50px;
+    margin-bottom: 20px;
     .content-wrapper {
+      gap: 10px;
       .image-wrapper {
-        max-width: 100px;
-        max-height: 100px;
+        max-width: 200px;
+        max-height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
         img {
           height: 100%;
-          width: 100%;
+          width: 200px;
+          object-fit: cover;
         }
       }
-      color: $white;
+      color: $primary_color;
       p {
         text-align: center;
       }
@@ -49,7 +54,7 @@
         &:hover {
           color: #36414a;
           transition: .3s;
-          background: $white;
+          background: $primary_color;
         }
       }
     }
